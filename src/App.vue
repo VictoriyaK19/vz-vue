@@ -1,35 +1,62 @@
 <template>
   <div>
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/indications">Indications</router-link>
-    </nav>
+    <Navbar />
+
+    <div class="loader-wrapper" v-bind:class="{ 'is-active': $store.state.loading }">
+      <div class="loader is-loading"></div>
+    </div>
+
     <section class="section">
       <router-view/>
     </section>
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import Navbar from '@/components/layout/Navbar'
+import axios from 'axios'
 
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  name: 'App',
+  components: {
+    Navbar
+  },
+  beforeCreate() {
+    console.log(this.$store.state.loading)
+    this.$store.commit('increment')
+    if (this.$store.state.token) {
+      axios.defaults.headers['X-Parse-Session-Token'] =  this.$store.state.token
     }
-  }
+  },
+}
+</script>
+
+<style lang="scss">
+@import '../node_modules/bulma';
+
+.loader-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #fff;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity .3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+
+        .loader {
+            height: 80px;
+            width: 80px;
+        }
+
+    &.is-active {
+        opacity: 1;
+        z-index: 1;
+    }
 }
 </style>

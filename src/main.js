@@ -10,4 +10,4 @@ axiios.defaults.headers = {
     'X-Parse-REST-API-Key': '6rzQoexbCEallVe1wHp0cUXSpNXBSWQgU1LOSq9y'
 }
 
-createApp(App).use(store).use(router).mount('#app')
+createApp(App).use(store).use(router, axiios).mount('#app')
