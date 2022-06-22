@@ -22,7 +22,6 @@ export default {
     Navbar
   },
   beforeCreate() {
-    console.log(this.$store.state.loading)
     this.$store.commit('increment')
     if (this.$store.state.token) {
       axios.defaults.headers['X-Parse-Session-Token'] =  this.$store.state.token
