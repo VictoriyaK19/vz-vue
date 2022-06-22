@@ -2,12 +2,12 @@
     <div class="container">
         <div class="columns is-multiline">
             <div class="column is-12">
-                <h1 class="title">{{ client.name }}</h1>
+                <h1 class="title">Потребител {{ client.name }}</h1>
 
             </div>
 
             <div class="column is-6">
-                <div class="box" v-for="p in client.period.length" v-bind:key="p">
+                <div class="box" v-for="p in client.period.length" v-bind:key="p" v-bind:class="!client.data[p-1].paid ? 'has-background-danger-light': ''">
                     <h2 class="subtitle">Детайли за период {{client.period[p-1]}}</h2>
                     <p>Старо: {{client.data[p-1].old}}, Ново: {{client.data[p-1].new}}</p>
                     <p>-- Разлика: {{client.data[p-1].new - client.data[p-1].old}} --</p>

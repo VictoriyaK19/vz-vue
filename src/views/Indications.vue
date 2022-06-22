@@ -64,17 +64,6 @@ export default {
             alert(err.message);
           }
 
-          // await axios
-          //   .get('/classes/indication?order=-createdAt&limit=1')
-          //   .then(response => {
-          //       console.log(response.data.results[0].units)
-          //       this.indData = response.data.results[0].createdAt.split('T')[0]
-          //       this.indUnits = Array.from(Object.values(response.data.results[0].units))
-          //   })
-          //   .catch(err => {
-          //     console.log(err)
-          //   })
-
           this.$store.commit('setLoading', false)
       }
   }
