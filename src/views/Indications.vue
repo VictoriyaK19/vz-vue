@@ -1,11 +1,30 @@
 <template>
   <div class="container">
-    <h1>INDICATIONS</h1>
-    <p>{{indData}}</p>
+    <h1 class="has-text-weight-bold">Показания от {{indData}}</h1>
+    <h3>Сумите са формирани при цена за кВат: {{taxes.kWprice}}.лв и такса: {{taxes.tax}}лв.</h3>
     <br/>
-    <div v-for="cl in indUnits" v-bind:key="cl.elN">
-        <p>{{cl.name}}</p>
-        <p>{{((cl.new - cl.old) * taxes.kWprice + taxes.tax).toFixed(2)}}</p>
+
+    <div class="column is-12">
+      <table class="table is-fullwidth">
+          <thead>
+              <tr>
+                  <th class="has-text-centered">ел.№</th>
+                  <th class="has-text-centered">Потребител</th>
+                  <th class="has-text-centered">Сума</th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr v-for="cl in indUnits" v-bind:key="cl.elN" v-bind:class="!cl.paid ? 'has-background-danger-light': ''">
+                  <td class="has-text-centered">{{ cl.elN }}</td>
+                  <td>{{ cl.name }}</td>
+                  <td class="has-text-centered">{{ ((cl.new - cl.old) * taxes.kWprice + taxes.tax).toFixed(2) }}</td>
+                  <td>
+                      <router-link :to="'/'" class="is-italic">инфо</router-link>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
     </div>
   </div>
 </template>
