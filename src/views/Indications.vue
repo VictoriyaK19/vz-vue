@@ -57,6 +57,7 @@ export default {
             
             this.indData = res[0].data.results[0].createdAt.split('T')[0]
             this.indUnits = Array.from(Object.values(res[0].data.results[0].units))
+            this.indUnits = this.indUnits.filter(unit => unit.elN != 99)
             this.taxes = res[1].data.results[0]
           }
           catch(err) {
