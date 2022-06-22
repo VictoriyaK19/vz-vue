@@ -20,7 +20,7 @@
                   <td>{{ cl.name }}</td>
                   <td class="has-text-centered">{{ ((cl.new - cl.old) * taxes.kWprice + taxes.tax).toFixed(2) }}</td>
                   <td>
-                      <router-link :to="'/'" class="is-italic">инфо</router-link>
+                      <router-link :to="{ name: 'client', params: { id: cl.elN }}" class="is-italic">инфо</router-link>
                   </td>
               </tr>
           </tbody>
