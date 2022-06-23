@@ -66,6 +66,10 @@ export default{
                     this.$store.commit('setUser', user)
                     localStorage.setItem('token', token)
                     localStorage.setItem('user', user)
+
+                    axios.defaults.headers['X-Parse-Session-Token'] = token
+
+                    this.$router.push('/indications')
                 })
                 .catch(error => {
                     if (error.response) {
