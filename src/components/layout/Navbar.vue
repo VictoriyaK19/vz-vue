@@ -8,22 +8,18 @@
         <div class="navbar-menu is-active">
             <div class="navbar-end">
                 
-                <router-link to="/about" class="navbar-item">За нас е това</router-link>
-                <router-link to="/indications" class="navbar-item">рефактор</router-link>
+                <router-link to="/indications" class="navbar-item">Показания</router-link>
+                
+                <router-link to="/about" class="navbar-item">Контакти</router-link>
 
                 <div class="navbar-item">
                     <div class="buttons">
                         <template v-if="$store.state.token">
-                            <router-link to="/my-page" class="button is-info">My Page</router-link>
+                            <router-link to="/logout" class="button is-danger is-light"><strong>Изход</strong></router-link>
                         </template>
 
                         <template v-else>
-                            <!--<router-link to="/register" class="button is-success">
-                                <strong>Register</strong>
-                            </router-link>-->
-                            <router-link to="/login" class="button is-light">
-                                <strong>Админ</strong>
-                            </router-link>
+                            <router-link to="/login" class="button is-info is-light"><strong>Админ</strong></router-link>
                         </template>
                     </div>
                 </div>

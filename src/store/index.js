@@ -4,7 +4,7 @@ export default createStore({
   state: {
       loading: false,
       token: '',
-      user: {},
+      user: '',
   },
   getters: {
   },
@@ -15,7 +15,7 @@ export default createStore({
         state.user = localStorage.getItem('user')
       } else {
         state.token = ''
-        state.user = {}
+        state.user = ''
       }
     },
     setLoading(state, status) {
@@ -29,6 +29,9 @@ export default createStore({
     },
     setUser(state, user) {
       state.user = user
+    },
+    removeUser(state) {
+      state.user = ''
     },
 
   },
