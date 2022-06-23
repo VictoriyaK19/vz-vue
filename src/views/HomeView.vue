@@ -1,14 +1,11 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <h1>Home Page</h1>
-  </div>
+    <div class="container">
+        <h1 class="has-text-weight-bold">начало</h1>
+    </div>
 </template>
 
 <script>
 export default {
   name: 'HomeView',
-  components: {
-  }
 }
 </script>

@@ -1,5 +1,6 @@
 <template>
   <div>
+      
     <Navbar />
 
     <div class="loader-wrapper" v-bind:class="{ 'is-active': $store.state.loading }">

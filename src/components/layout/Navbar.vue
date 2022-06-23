@@ -2,14 +2,14 @@
     <nav class="navbar is-dark">
         <div class="navbar-brand">
             <router-link to="/" class="navbar-item">
-                <strong>VZ</strong>
+                <strong>ВЗ</strong>
             </router-link>
         </div>
         <div class="navbar-menu is-active">
             <div class="navbar-end">
                 
-                <router-link to="/about" class="navbar-item">About </router-link>
-                <router-link to="/indications" class="navbar-item">Indications</router-link>
+                <router-link to="/about" class="navbar-item">За нас е това</router-link>
+                <router-link to="/indications" class="navbar-item">рефактор</router-link>
 
                 <div class="navbar-item">
                     <div class="buttons">
@@ -18,11 +18,11 @@
                         </template>
 
                         <template v-else>
-                            <router-link to="/register" class="button is-success">
+                            <!--<router-link to="/register" class="button is-success">
                                 <strong>Register</strong>
-                            </router-link>
+                            </router-link>-->
                             <router-link to="/login" class="button is-light">
-                                <strong>Login</strong>
+                                <strong>Админ</strong>
                             </router-link>
                         </template>
                     </div>
@@ -37,3 +37,7 @@ export default {
     name: 'Navbar',
 }
 </script>
+
+<style>
+
+</style>
