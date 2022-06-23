@@ -51,6 +51,7 @@ export default{
             this.$store.commit('setLoading', true)
 
             localStorage.removeItem('token')
+            localStorage.removeItem('user')
             const formData = {
                     username: this.username,
                     password: this.password,

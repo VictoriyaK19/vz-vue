@@ -4,6 +4,9 @@
             <router-link to="/" class="navbar-item">
                 <strong>ВЗ</strong>
             </router-link>
+            <template v-if="$store.state.user">
+                <p class="navbar-item">Привет, {{$store.state.user}}</p>
+            </template>
         </div>
         <div class="navbar-menu is-active">
             <div class="navbar-end">
