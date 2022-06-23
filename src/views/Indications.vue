@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h1 class="has-text-weight-bold">Показания от {{indData}}</h1>
-    <h3>Сумите са формирани при цена за кВат: {{taxes.kWprice}}.лв и такса: {{taxes.tax}}лв.</h3>
+    <h3>Сумите са формирани при цена за киловат: {{taxes.kWprice}}.лв и такса: {{taxes.tax}}лв.</h3>
     <br/>
 
     <div class="column is-12">

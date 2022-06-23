@@ -6,8 +6,7 @@
 
             </div>
 
-            <!-- <Chart /> -->
-            <chart :type="'bar'" :data="{labels, datasets}" :options="options"></chart>
+            <chart :type="'bar'" :height="100" :data="{labels, datasets}" :options="options"></chart>
 
             <div class="column is-6">
                 <div class="box" v-for="p in client.period.length" v-bind:key="p" v-bind:class="!client.data[p-1].paid ? 'has-background-danger-light': ''">
@@ -23,7 +22,6 @@
 
 <script>
 import axios from 'axios'
-// import Chart from '../components/layout/Chart.vue'
 import Chart from 'vue-bulma-chartjs'
 
 export default {
@@ -33,20 +31,28 @@ export default {
     },
     data() {
         return {
+            res: [],
             client: {
                 name: '',
                 period: [],
                 data: [],
             },
-            // data: {
-                labels: [],
-                datasets: [{
-                    data: [],
-                    backgroundColor: []
-                }],
-            // },
+            
+            labels: [],
+            datasets: [{
+                label: 'Консумирани киловати',
+                data: [],
+                backgroundColor: []
+            }],
             options: {
-                segmentShowStroke: false
+                segmentShowStroke: false,
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                        }
+                    }]
+                },
             }
         }
     },
@@ -62,20 +68,22 @@ export default {
             await axios
                 .get('/classes/indication?order=-createdAt')
                 .then(response => {
-                    response.data.results.forEach( r => {
-                        this.client.period.push(r.createdAt.split('T')[0])
-                        this.labels.push(r.createdAt.split('T')[0])
-                        this.client.data.push(r.units[clientID])
-                        this.client.name = r.units[clientID].name
-                    })
+                    this.res = response.data.results
                 })
                 .catch(err => {
                     console.log(err)
                 })
-            this.labels = this.client.period
-            console.log(this.labels)
+
+            this.res.forEach(r => {
+                this.client.period.push(r.createdAt.split('T')[0])
+                this.labels.push(`${r.createdAt.split('T')[0]} ст.${r.units[clientID].old}-н.${r.units[clientID].new}`)
+                this.client.data.push(r.units[clientID])
+                this.client.name = r.units[clientID].name
+            })
+            
             this.datasets[0].data = Array.from(this.client.data.map(cl => cl.new - cl.old))
-            console.log(this.datasets[0])
+            this.datasets[0].backgroundColor = Array.from(this.client.data.map(cl => cl.paid ? '#E0FFFF' : '#FFF0F5'))
+            //this.datasets[0].backgroundColor = Array(this.labels.length).fill('#FFF0F5')
             
             this.$store.commit('setLoading', false)
         }
