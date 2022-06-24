@@ -1,8 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import store from '@/store'
+
 import HomeView from '../views/HomeView.vue'
 import Indications from '../views/Indications.vue'
 import ClientView from '../views/ClientView.vue'
 import Login from '../views/Login.vue'
+import Taxes from '../views/Taxes.vue'
 
 const routes = [
   {
@@ -26,6 +29,14 @@ const routes = [
     component: ClientView
   },
   {
+    path: '/taxes',
+    name: 'taxes',
+    component: Taxes,
+    meta: {
+      requireLogin: true,
+    }
+  },
+  {
     path: '/about',
     name: 'about',
     // route level code-splitting
@@ -38,6 +49,14 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requireLogin) && !store.state.token) {
+    next('/login')
+  } else {
+    next()
+  }
 })
 
 export default router

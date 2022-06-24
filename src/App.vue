@@ -1,6 +1,5 @@
 <template>
   <div>
-      
     <Navbar />
 
     <div class="loader-wrapper" v-bind:class="{ 'is-active': $store.state.loading }">
@@ -10,17 +9,20 @@
     <section class="section">
       <router-view/>
     </section>
+    <Footer />
+
   </div>
 </template>
 
 <script>
 import Navbar from '@/components/layout/Navbar'
+import Footer from '@/components/layout/Footer'
 import axios from 'axios'
 
 export default {
   name: 'App',
   components: {
-    Navbar
+    Navbar, Footer
   },
   beforeCreate() {
     this.$store.commit('increment')
