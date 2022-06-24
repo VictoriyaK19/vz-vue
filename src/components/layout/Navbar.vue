@@ -16,7 +16,8 @@
                 <router-link to="/about" class="navbar-item">Контакти</router-link>
 
                 <template v-if="$store.state.token">
-                    <router-link to="/taxes" class="navbar-item is-light"><strong>Такси</strong></router-link>
+                    <router-link to="/payments" class="navbar-item"><strong>Плащания</strong></router-link>
+                    <router-link to="/taxes" class="navbar-item"><strong>Такси</strong></router-link>
                 </template>
 
                 <div class="navbar-item">
