@@ -23,7 +23,7 @@
                         <p v-for="error in errors" v-bind:key="error">{{ error }}</p>
                     </div>
 
-                    <div class="field">
+                    <div class="field mt-5">
                         <div class="control">
                             <button class="button is-success">Вход</button>
                         </div>
@@ -77,7 +77,7 @@ export default{
                             this.errors.push(`${property}:  ${error.response.data[property]}`)
                         }
                     } else if (error.message) {
-                        this.errors.push(`Somthing went wrong. ${error.message}`)
+                        this.errors.push(`Error: ${error.message}`)
                     }
                 })
 

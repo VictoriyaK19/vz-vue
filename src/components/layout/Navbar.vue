@@ -22,7 +22,7 @@
                 <div class="navbar-item">
                     <div class="buttons">
                         <template v-if="$store.state.token">
-                            <router-link @click="logout" to="/logout" class="button is-danger is-light"><strong>Изход</strong></router-link>
+                            <router-link @click="logout" to="#" class="button is-danger is-light"><strong>Изход</strong></router-link>
                         </template>
 
                         <template v-else>
