@@ -7,6 +7,7 @@ import ClientView from '../views/ClientView.vue'
 import Login from '../views/Login.vue'
 import Taxes from '../views/Taxes.vue'
 import Payments from '../views/Payments.vue'
+import Edit from '../views/Edit.vue'
 
 const routes = [
   {
@@ -41,6 +42,14 @@ const routes = [
     path: '/payments',
     name: 'payments',
     component: Payments,
+    meta: {
+      requireLogin: true,
+    }
+  },
+  {
+    path: '/edit/:id',
+    name: 'edit',
+    component: Edit,
     meta: {
       requireLogin: true,
     }
