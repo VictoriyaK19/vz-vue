@@ -58,7 +58,7 @@
 import axios from 'axios'
 
 export default {
-    name: 'Edit',
+    name: 'EditClient',
     data() {
         return {
             clientID: '',

@@ -21,12 +21,12 @@
                   <td>{{ cl.name }}</td>
                   <td class="has-text-centered">{{ ((cl.new - cl.old) * taxes.kWprice + taxes.tax).toFixed(2) }}</td>
                   <td class="has-text-centered">
-                    <button v-if="cl.paid" class="button is-danger is-light">Изчисти</button>
-                    <button v-else class="button is-info is-light">Плати</button>
+                    <button v-if="cl.paid" class="button is-small is-danger is-light">Изчисти</button>
+                    <button v-else class="button is-small is-info is-light">Плати</button>
                   </td>
                   <td class="has-text-centered">
                     <!-- <button class="button is-warning is-light">Редактирай</button> -->
-                    <router-link :to="{ name: 'edit', params: { id: cl.elN }}" class="button is-warning is-light">Редактирай</router-link>
+                    <router-link :to="{ name: 'edit-client', params: { id: cl.elN }}" class="button is-small is-warning is-light">Редактирай</router-link>
 
                   </td>
               </tr>
