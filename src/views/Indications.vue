@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="has-text-weight-bold">Показания от {{indData}}</h1>
+    <h1 class="has-text-weight-bold">Показания от {{indDate}}</h1>
     <h3>Сумите са формирани при цена за киловат: {{taxes.kWprice}}.лв и такса: {{taxes.tax}}лв.</h3>
     <br/>
 
@@ -15,7 +15,7 @@
               </tr>
           </thead>
           <tbody>
-              <tr v-for="cl in indUnits" v-bind:key="cl.elN" v-bind:class="!cl.paid ? 'has-background-danger-light': ''">
+              <tr v-for="cl in indClients" v-bind:key="cl.elN" v-bind:class="!cl.paid ? 'has-background-danger-light': ''">
                   <td class="has-text-centered">{{ cl.elN }}</td>
                   <td>{{ cl.name }}</td>
                   <td class="has-text-centered">{{ ((cl.new - cl.old) * taxes.kWprice + taxes.tax).toFixed(2) }}</td>
@@ -31,14 +31,13 @@
 
 <script>
 import axios from 'axios'
-import router from '../router'
 
 export default {
   name: 'Indications',
   data() {
       return {
-          indData: '',
-          indUnits: [],
+          indDate: '',
+          indClients: [],
           taxes: {}
       }
   },
@@ -55,9 +54,9 @@ export default {
               axios.get('/classes/taxes')
             ])
             
-            this.indData = res[0].data.results[0].createdAt.split('T')[0]
-            this.indUnits = Array.from(Object.values(res[0].data.results[0].units))
-            this.indUnits = this.indUnits.filter(unit => unit.elN != 99)
+            this.indDate = res[0].data.results[0].createdAt.split('T')[0]
+            this.indClients = Array.from(Object.values(res[0].data.results[0].units))
+            this.indClients = this.indClients.filter(unit => unit.elN != 99)
             this.taxes = res[1].data.results[0]
           }
           catch(err) {

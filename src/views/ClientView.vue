@@ -8,13 +8,13 @@
 
             <chart :type="'bar'" :height="100" :data="{labels, datasets}" :options="options"></chart>
 
-            <div class="column is-6">
+            <!-- <div class="column is-6">
                 <div class="box" v-for="p in client.period.length" v-bind:key="p" v-bind:class="!client.data[p-1].paid ? 'has-background-danger-light': ''">
                     <h2 class="subtitle">Детайли за период {{client.period[p-1]}}</h2>
                     <p>Старо: {{client.data[p-1].old}}, Ново: {{client.data[p-1].new}}</p>
                     <p>-- Разлика: {{client.data[p-1].new - client.data[p-1].old}} --</p>
                 </div>
-            </div>
+            </div> -->
 
         </div>
     </div>
