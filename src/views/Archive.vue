@@ -26,7 +26,7 @@
                             <th class="has-text-centered">ел.№</th>
                             <th class="has-text-centered">Потребител</th>
                             <th class="has-text-centered">Старо</th>
-                            <th class="has-text-centered">Ново></th>
+                            <th class="has-text-centered">Ново</th>
                         </tr>
                     </thead>
                     <tbody>

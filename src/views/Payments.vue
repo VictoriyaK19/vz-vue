@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="has-text-weight-bold">Плащания за {{ indDate}}</h1>
+    <h1 class="is-size-4 has-text-weight-bold">Плащания за {{ indDate}}</h1>
     <h3>Сумите са формирани при цена за киловат: {{ taxes.kWprice }}.лв и такса: {{taxes.tax}}лв.</h3>
     <br/> 
 
@@ -21,8 +21,8 @@
                   <td>{{ cl.name }}</td>
                   <td class="has-text-centered">{{ ((cl.new - cl.old) * taxes.kWprice + taxes.tax).toFixed(2) }}</td>
                   <td class="has-text-centered">
-                    <button v-if="cl.paid" class="button is-small is-danger is-light">Изчисти</button>
-                    <button v-else class="button is-small is-info is-light">Плати</button>
+                    <button v-if="cl.paid" class="button is-small is-danger is-light" @click="togglePaidUnpaid(cl.elN)">Изчисти</button>
+                    <button v-else class="button is-small is-info is-light" @click="togglePaidUnpaid(cl.elN)">Плати</button>
                   </td>
                   <td class="has-text-centered">
                     <router-link :to="{ name: 'edit-client', params: { id: cl.elN }}" class="button is-small is-warning is-light">Редактирай</router-link>
@@ -48,11 +48,13 @@
 
 <script>
 import axios from 'axios'
+import { toast } from 'bulma-toast'
 
 export default {
     name: 'Payments',
     data() {
       return {
+          objectId: '',
           indDate: '',
           indClients: [],
           indMain: {},
@@ -74,7 +76,7 @@ export default {
                 axios.get('/classes/indication?order=-createdAt&limit=1'),
                 axios.get('/classes/taxes')
               ])
-              
+              this.objectId = res[0].data.results[0].objectId
               this.indDate = res[0].data.results[0].createdAt.split('T')[0]
               const rawUnits = Array.from(Object.values(res[0].data.results[0].units))
               this.taxes = res[1].data.results[0]
@@ -103,6 +105,44 @@ export default {
           const cosumations = this.indClients.map(cl => cl.new - cl.old)
           const consumed = cosumations.reduce((a, b) => a + b, 0)
           this.consumed = consumed
+        },
+        async togglePaidUnpaid(clIndex) {
+          this.indClients[clIndex - 1].paid = this.indClients[clIndex -1].paid ? false : true
+          const toastData = {
+              message: 'info',
+              type: 'is-info',
+              dismissible: true,
+              pauseOnHover: true,
+              duration: 2000,
+              position: 'bottom-right',
+          }
+		  if (this.indClients[clIndex - 1].paid) {
+			toastData.message = 'Плащането е успешно.'
+			toastData.type = 'is-success'
+			toast(toastData)
+		  }else {
+			toastData.message = 'Неуспешно плащане!'
+			toastData.type = 'is-danger'
+			toast(toastData)
+		  }
+        //   await axios
+        //     .put('/classes/indications/' + this.objectId, {units: this.indClients})
+        //     .then(response => {
+        //         toastData.message = 'Плащането е успешно коригирано.'
+        //         toastData.type = 'is-success'
+        //         toast(toastData)
+
+        //         this.$router.push('/indications')
+        //     })
+        //     .catch(error => {
+        //         console.log(error)
+
+		// 		toastData.message = 'Неуспешна корекция!'
+        //         toastData.type = 'is-danger'
+        //         toast(toastData)
+
+		// 		this.indClients[clIndex - 1].paid = this.indClients[clIndex -1].paid ? false : true
+        //     })
         }
     }
 }
