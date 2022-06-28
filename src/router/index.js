@@ -9,6 +9,7 @@ import Taxes from '../views/Taxes.vue'
 import Payments from '../views/Payments.vue'
 import EditClient from '../views/EditClient.vue'
 import Archive from '../views/Archive.vue'
+import Reporting from '../views/Reporting.vue'
 
 const routes = [
   {
@@ -56,6 +57,14 @@ const routes = [
     path: '/edit/:id',
     name: 'edit-client',
     component: EditClient,
+    meta: {
+      requireLogin: true,
+    }
+  },,
+  {
+    path: '/reporting',
+    name: 'reporting',
+    component: Reporting,
     meta: {
       requireLogin: true,
     }

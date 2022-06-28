@@ -17,7 +17,7 @@
 
                 <router-link to="/archive" class="navbar-item"><strong>Архив</strong></router-link>
 
-                <template v-if="$store.state.token">
+                <template v-if="$store.state.user">
                     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link has-text-info"><strong>Администрация</strong></a>
 
@@ -25,11 +25,10 @@
                             <router-link to="/payments" class="navbar-item has-text-info"><strong>Плащания</strong></router-link>
                             <router-link to="/taxes" class="navbar-item has-text-info"><strong>Такси</strong></router-link>
                             <router-link to="/reporting" class="navbar-item has-text-info"><strong>Отчитане</strong></router-link>
-                            <router-link to="/" class="navbar-item has-text-info"><strong>Добави нов</strong></router-link>
+                            <router-link to="/" class="navbar-item has-text-info"><strong>Добавяне</strong></router-link>
                             <router-link to="/" class="navbar-item has-text-info"><strong>Изтриване</strong></router-link>
                             <hr class="navbar-divider">
                             <router-link @click="logout" to="#" class="navbar-item has-text-danger"><strong>Изход</strong></router-link>
-
                         </div>
                     </div>
                 </template>
