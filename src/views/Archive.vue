@@ -1,16 +1,22 @@
 <template>
     <div class="container">
-        <div class="box has-text-right">
-            <div class="dropdown is-hoverable is-right">
-                <div class="dropdown-trigger">
-                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
-                        <strong>Изберете архивни данни</strong>
-                    </button>
-                </div>
-                <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-                    <div class="dropdown-content" v-for="date, index in dates" v-bind:key="index">
-                        <div class="dropdown-item">
-                            <a @click="fromIndex(index)"><strong>От дата: {{ date }}</strong></a>
+        <div class="box columns">
+            <div class="column">
+                <h1 class="is-size-4 has-text-weight-bold">Архив</h1>
+            </div>
+
+            <div class="column has-text-right">
+                <div class="dropdown is-hoverable is-right">
+                    <div class="dropdown-trigger">
+                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu1">
+                            <strong>Изберете архивни данни</strong>
+                        </button>
+                    </div>
+                    <div class="dropdown-menu" id="dropdown-menu1" role="menu">
+                        <div class="dropdown-content" v-for="date, index in dates" v-bind:key="index">
+                            <div class="dropdown-item">
+                                <a @click="fromIndex(index)"><strong>От дата: {{ date }}</strong></a>
+                            </div>
                         </div>
                     </div>
                 </div>

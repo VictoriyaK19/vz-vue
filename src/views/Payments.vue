@@ -116,23 +116,13 @@ export default {
               duration: 2000,
               position: 'bottom-right',
           }
-		  if (this.indClients[clIndex - 1].paid) {
-			toastData.message = 'Плащането е успешно.'
-			toastData.type = 'is-success'
-			toast(toastData)
-		  }else {
-			toastData.message = 'Неуспешно плащане!'
-			toastData.type = 'is-danger'
-			toast(toastData)
-		  }
+
         //   await axios
         //     .put('/classes/indications/' + this.objectId, {units: this.indClients})
         //     .then(response => {
         //         toastData.message = 'Плащането е успешно коригирано.'
         //         toastData.type = 'is-success'
         //         toast(toastData)
-
-        //         this.$router.push('/indications')
         //     })
         //     .catch(error => {
         //         console.log(error)
