@@ -18,21 +18,26 @@
                 <router-link to="/archive" class="navbar-item"><strong>Архив</strong></router-link>
 
                 <template v-if="$store.state.token">
-                    <router-link to="/payments" class="navbar-item has-text-info"><strong>Плащания</strong></router-link>
-                    <router-link to="/taxes" class="navbar-item has-text-info"><strong>Такси</strong></router-link>
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link has-text-info"><strong>Администрация</strong></a>
+
+                        <div class="navbar-dropdown">
+                            <router-link to="/payments" class="navbar-item has-text-info"><strong>Плащания</strong></router-link>
+                            <router-link to="/taxes" class="navbar-item has-text-info"><strong>Такси</strong></router-link>
+                            <router-link to="/reporting" class="navbar-item has-text-info"><strong>Отчитане</strong></router-link>
+                            <router-link to="/" class="navbar-item has-text-info"><strong>Добави нов</strong></router-link>
+                            <router-link to="/" class="navbar-item has-text-info"><strong>Изтриване</strong></router-link>
+                            <hr class="navbar-divider">
+                            <router-link @click="logout" to="#" class="navbar-item has-text-danger"><strong>Изход</strong></router-link>
+
+                        </div>
+                    </div>
                 </template>
 
-                <div class="navbar-item">
-                    <div class="buttons">
-                        <template v-if="$store.state.token">
-                            <router-link @click="logout" to="#" class="button is-danger is-light"><strong>Изход</strong></router-link>
-                        </template>
-
-                        <template v-else>
-                            <router-link to="/login" class="button is-info is-light"><strong>Админ</strong></router-link>
-                        </template>
-                    </div>
-                </div>
+                <template v-else>
+                    <router-link to="/login" class="navbar-item has-text-info"><strong>Админ</strong></router-link>
+                </template>
+                
             </div>
         </div>
     </nav>
