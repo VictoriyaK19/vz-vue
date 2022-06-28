@@ -8,6 +8,7 @@ import Login from '../views/Login.vue'
 import Taxes from '../views/Taxes.vue'
 import Payments from '../views/Payments.vue'
 import EditClient from '../views/EditClient.vue'
+import Archive from '../views/Archive.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/indications',
     name: 'indications',
     component: Indications
+  },
+  {
+    path: '/archive',
+    name: 'archive',
+    component: Archive
   },
   {
     path: '/client/:id',

@@ -11,13 +11,15 @@
         <div class="navbar-menu is-active">
             <div class="navbar-end">
                 
-                <router-link to="/indications" class="navbar-item">Показания</router-link>
+                <router-link to="/indications" class="navbar-item"><strong>Показания</strong></router-link>
                 
-                <router-link to="/about" class="navbar-item">Контакти</router-link>
+                <router-link to="/about" class="navbar-item"><strong>Контакти</strong></router-link>
+
+                <router-link to="/archive" class="navbar-item"><strong>Архив</strong></router-link>
 
                 <template v-if="$store.state.token">
-                    <router-link to="/payments" class="navbar-item"><strong>Плащания</strong></router-link>
-                    <router-link to="/taxes" class="navbar-item"><strong>Такси</strong></router-link>
+                    <router-link to="/payments" class="navbar-item has-text-info"><strong>Плащания</strong></router-link>
+                    <router-link to="/taxes" class="navbar-item has-text-info"><strong>Такси</strong></router-link>
                 </template>
 
                 <div class="navbar-item">
@@ -47,7 +49,6 @@ export default {
                 .post('/logout')
                 .then(response => {
                     console.log('Logout!')
-                    console.log(response)
                 })
                 .catch(error =>{
                     console.log(JSON.stringify(error))

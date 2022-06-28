@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <h1 class="has-text-weight-bold">Плащания за {{indDate}}</h1>
-    <h3>Сумите са формирани при цена за киловат: {{taxes.kWprice}}.лв и такса: {{taxes.tax}}лв.</h3>
-    <br/>
+    <h1 class="has-text-weight-bold">Плащания за {{ indDate}}</h1>
+    <h3>Сумите са формирани при цена за киловат: {{ taxes.kWprice }}.лв и такса: {{taxes.tax}}лв.</h3>
+    <br/> 
 
     <div class="column is-12">
       <table class="table is-fullwidth">
