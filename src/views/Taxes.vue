@@ -64,13 +64,13 @@ export default {
         },
         async submitForm() {
             const toastData = {
-                    message: 'info',
-                    type: 'is-info',
-                    dismissible: true,
-                    pauseOnHover: true,
-                    duration: 2000,
-                    position: 'bottom-right',
-                }
+                message: 'info',
+                type: 'is-info',
+                dismissible: true,
+                pauseOnHover: true,
+                duration: 2000,
+                position: 'bottom-right',
+            }
                 
             if (Number(this.taxes.tax) >= 0 && Number(this.taxes.kWprice) > 0) {
                 this.$store.commit('setLoading', true)
@@ -82,8 +82,6 @@ export default {
                 await axios
                     .put('/classes/taxes/' + this.taxes.objectId, newdata)
                     .then(response => {
-                        console.log(response.data)
-
                         toastData.message = 'Таксите бяха записани успешно.'
                         toastData.type = 'is-success'
                         toast(toastData)

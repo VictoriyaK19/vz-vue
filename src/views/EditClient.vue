@@ -83,7 +83,7 @@ export default {
             this.clientID = this.$route.params.id
           
             await axios
-                .get('/classes/indication?order=-createdAt')
+                .get('/classes/indication?order=-createdAt&limit=1')
                 .then(response => {
                     this.data = response.data.results[0]
                     this.client = response.data.results[0].units[this.clientID]
@@ -95,8 +95,38 @@ export default {
             this.$store.commit('setLoading', false)
         },
         async submitForm() {
+            const toastData = {
+                message: 'info',
+                type: 'is-info',
+                dismissible: true,
+                pauseOnHover: true,
+                duration: 2000,
+                position: 'bottom-right',
+            }
             this.data.units[this.clientID] = this.client
-            console.log(this.data.units)
+            const units = this.data.units
+
+            console.log(units)
+            console.log(this.data.objectId)
+
+            // if (this.client.old >= 0 && this.client.new >= this.client.old && this.client.name != '') {
+            //     await axios
+            //         .put('/classes/indications/' + this.data.objectId, {units,})
+            //         .then(response => {
+            //             toastData.message = 'Промените бяха записани успешно.'
+            //             toastData.type = 'is-success'
+            //             toast(toastData)
+
+            //             this.$router.push('/indications')
+            //         })
+            //         .catch(error => {
+            //             console.log(error)
+            //         })
+            // } else {
+            //     toastData.message = 'Липсващи или невалидни данни.'
+            //     toastData.type = 'is-danger'
+            //     toast(toastData)
+            // }
         }
     }
 }
