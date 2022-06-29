@@ -10,6 +10,7 @@ import Payments from '../views/Payments.vue'
 import EditClient from '../views/EditClient.vue'
 import Archive from '../views/Archive.vue'
 import Reporting from '../views/Reporting.vue'
+import AddClient from '../views/AddClient.vue'
 
 const routes = [
   {
@@ -60,11 +61,19 @@ const routes = [
     meta: {
       requireLogin: true,
     }
-  },,
+  },
   {
     path: '/reporting',
     name: 'reporting',
     component: Reporting,
+    meta: {
+      requireLogin: true,
+    }
+  },
+  {
+    path: '/add-client',
+    name: 'add-client',
+    component: AddClient,
     meta: {
       requireLogin: true,
     }

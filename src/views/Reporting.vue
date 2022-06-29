@@ -27,7 +27,7 @@
     </div>
 
     <div class="box has-text-centered">
-        <button @click="onSave()" class="button is-info">Запиши показанията</button>
+        <button @click="onSave" class="button is-info">Запиши показанията</button>
     </div>
   </div>
 </template>
@@ -104,7 +104,7 @@ export default {
             //     })
             //     .catch(error => {
             //         console.log(error)
-            //         toastData.message = 'Липсващи или невалидни данни.'
+            //         toastData.message = 'Неуспешен запис'
             //         toastData.type = 'is-danger'
             //         toast(toastData)
             //     })
