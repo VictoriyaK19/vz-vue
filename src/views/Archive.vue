@@ -47,6 +47,12 @@
             </div>
         </div>
 
+        <div v-else class="box has-background-info-light">
+            <figure class="image is-3by3">
+                <img src="../assets/img_archive.png">
+            </figure>
+        </div>
+
     </div>
 </template>
 

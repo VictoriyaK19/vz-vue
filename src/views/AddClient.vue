@@ -44,7 +44,7 @@
 
                     <div class="field mt-5">
                         <div class="control">
-                            <button class="button is-success">Добави</button>
+                            <button class="button is-info">Добави</button>
                         </div>
                     </div>
                 </form>

@@ -25,7 +25,7 @@
 
                     <div class="field mt-5">
                         <div class="control">
-                            <button class="button is-success">Вход</button>
+                            <button class="button is-info">Вход</button>
                         </div>
                     </div>
                 </form>

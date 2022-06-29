@@ -5,7 +5,7 @@
                 <strong>ВЗ</strong>
             </router-link>
             <template v-if="$store.state.user">
-                <p class="navbar-item">Привет, {{$store.state.user}}</p>
+                <p class="navbar-item has-text-info">Привет, {{$store.state.user}}</p>
             </template>
         </div>
         <div class="navbar-menu is-active">
