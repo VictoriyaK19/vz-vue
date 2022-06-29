@@ -139,7 +139,7 @@ export default {
         //     })
         },
         onDownload() {
-          const fileName = 'indications.csv'
+          const fileName =`indications-${this.indDate}.csv`
 
           let downloadData = this.indClients.map(cl => JSON.stringify(cl))
           downloadData.push(JSON.stringify(this.indMain))
