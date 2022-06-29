@@ -3,7 +3,7 @@
         <div class="columns">
             <div class="column">
                 <h1 class="title">Редакция на Потребител</h1>
-                <h3>{{client.name}}</h3>
+                <h3 class="title has-text-info">{{client.name}}</h3>
             </div>
 
             <div class="column">

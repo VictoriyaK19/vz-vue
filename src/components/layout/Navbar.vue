@@ -26,7 +26,6 @@
                             <router-link to="/taxes" class="navbar-item has-text-info"><strong>Такси</strong></router-link>
                             <router-link to="/reporting" class="navbar-item has-text-info"><strong>Отчитане</strong></router-link>
                             <router-link to="/add-client" class="navbar-item has-text-info"><strong>Добавяне</strong></router-link>
-                            <router-link to="/" class="navbar-item has-text-info"><strong>Изтриване</strong></router-link>
                             <hr class="navbar-divider">
                             <router-link @click="logout" to="#" class="navbar-item has-text-danger"><strong>Изход</strong></router-link>
                         </div>

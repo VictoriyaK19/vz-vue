@@ -10,6 +10,7 @@
               <tr>
                   <th class="has-text-centered">ел.№</th>
                   <th class="has-text-centered">Потребител</th>
+                  <th class="has-text-centered">Бележка</th>
                   <th class="has-text-centered">Сума</th>
                   <th></th>
                   <th></th>
@@ -19,6 +20,7 @@
               <tr v-for="cl in indClients" v-bind:key="cl.elN" v-bind:class="cl.paid ? '' : 'has-background-danger-light'">
                   <td class="has-text-centered">{{ cl.elN }}</td>
                   <td>{{ cl.name }}</td>
+                  <td>{{ cl.note }}</td>
                   <td class="has-text-centered">{{ ((cl.new - cl.old) * taxes.kWprice + taxes.tax).toFixed(2) }}</td>
                   <td class="has-text-centered">
                     <button v-if="cl.paid" class="button is-small is-danger is-light" @click="togglePaidUnpaid(cl.elN)">Изчисти</button>
