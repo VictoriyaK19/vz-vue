@@ -2,7 +2,7 @@
     <footer class="footer has-background-light is-small">
     <div class="content has-text-centered">
         <p>
-        <strong>Footer</strong> by <a href="#">KaliX</a>
+        <strong><a href="#">@KaliX</a></strong>
         </p>
     </div>
     </footer>

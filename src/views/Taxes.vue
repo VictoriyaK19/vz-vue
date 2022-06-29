@@ -54,7 +54,6 @@ export default {
                 .get('/classes/taxes')
                 .then(response => {
                     this.taxes = response.data.results[0]
-                    console.log(this.taxes)
                 })
                 .catch(error => {
                     console.log(error)
