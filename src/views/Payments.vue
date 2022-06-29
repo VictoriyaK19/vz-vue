@@ -41,6 +41,10 @@
           <p>Потребители киловати: {{ consumed }} kW</p>
         </div>
       </div>
+
+      <div class="box has-text-centered">
+          <button @click="onDownload" class="button is-info">Свали данните</button>
+      </div>
       
     </div>
   </div>
@@ -127,12 +131,26 @@ export default {
         //     .catch(error => {
         //         console.log(error)
 
-		// 		toastData.message = 'Неуспешна корекция!'
+		    // 		toastData.message = 'Неуспешна корекция!'
         //         toastData.type = 'is-danger'
         //         toast(toastData)
 
-		// 		this.indClients[clIndex - 1].paid = this.indClients[clIndex -1].paid ? false : true
+		    // 		this.indClients[clIndex - 1].paid = this.indClients[clIndex -1].paid ? false : true
         //     })
+        },
+        onDownload() {
+          const fileName = 'indications.csv'
+
+          let downloadData = this.indClients.map(cl => JSON.stringify(cl))
+          downloadData.push(JSON.stringify(this.indMain))
+          downloadData.push(JSON.stringify(this.taxes))
+          downloadData = downloadData.join('\n')
+
+          const anchor = document.createElement('a');
+          anchor.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(downloadData);
+          anchor.target = '_blank';
+          anchor.download = fileName;
+          anchor.click();
         }
     }
 }
