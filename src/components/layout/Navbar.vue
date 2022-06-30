@@ -12,10 +12,8 @@
             <div class="navbar-end">
                 
                 <router-link to="/indications" class="navbar-item"><strong>Показания</strong></router-link>
-                
-                <router-link to="/about" class="navbar-item"><strong>Контакти</strong></router-link>
-
                 <router-link to="/archive" class="navbar-item"><strong>Архив</strong></router-link>
+                <router-link to="/about" class="navbar-item"><strong>Контакти</strong></router-link>
 
                 <template v-if="$store.state.user">
                     <div class="navbar-item has-dropdown is-hoverable">
