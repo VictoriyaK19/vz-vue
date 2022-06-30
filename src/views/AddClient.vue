@@ -62,8 +62,7 @@ export default {
     data() {
       return {
             objectId: '',
-            indClients: [],
-            indMain: {},
+            units: {},
             newClient: {
                 check: "on",
                 elN: "",
@@ -85,13 +84,9 @@ export default {
 
           try {
             const res = await axios.get('/classes/indication?order=-createdAt&limit=1')
-            
             this.objectId = res.data.results[0].objectId
-            const rawUnits = Array.from(Object.values(res.data.results[0].units))
-
-            this.newClient.elN = rawUnits.length
-            this.indMain = rawUnits.pop()
-            this.indClients = rawUnits
+            this.units = res.data.results[0].units
+            this.newClient.elN = Object.keys(this.units).length
           }
           catch(err) {
             alert(err.message);
@@ -108,15 +103,14 @@ export default {
                 duration: 2000,
                 position: 'bottom-right',
             }
-            this.indClients.push(this.newClient)
-            this.indClients.push(this.indMain)
-            const units = this.indClients
+            this.units[this.newClient.elN]= this.newClient
+            const  updatedUnits = { units: this.units }
             
-            console.log(units)
+            console.log(updatedUnits.units)
 
             // if (this.client.old >= 0 && this.client.new >= this.client.old && this.client.name != '') {
             //     await axios
-            //         .put('/classes/indications/' + this.objectId, {units,})
+            //         .put('/classes/indications/' + this.objectId, updatedUnits)
             //         .then(response => {
             //             toastData.message = 'Промените бяха записани успешно.'
             //             toastData.type = 'is-success'

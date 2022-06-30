@@ -88,6 +88,7 @@ export default {
                 .then(response => {
                     this.data = response.data.results[0]
                     this.client = response.data.results[0].units[this.clientID]
+                    console.log(this.data.units)
                 })
                 .catch(err => {
                     console.log(err)
@@ -105,14 +106,14 @@ export default {
                 position: 'bottom-right',
             }
             this.data.units[this.clientID] = this.client
-            const units = this.data.units
+            const updatedUnits = { units: this.data.units }
 
-            console.log(units)
+            console.log(updatedUnits.units)
             console.log(this.data.objectId)
 
             // if (this.client.old >= 0 && this.client.new >= this.client.old && this.client.name != '') {
             //     await axios
-            //         .put('/classes/indications/' + this.data.objectId, {units,})
+            //         .put('/classes/indications/' + this.data.objectId, updatedUnits)
             //         .then(response => {
             //             toastData.message = 'Промените бяха записани успешно.'
             //             toastData.type = 'is-success'

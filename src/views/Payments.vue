@@ -62,6 +62,7 @@ export default {
     data() {
       return {
           objectId: '',
+          units: {},
           indDate: '',
           indClients: [],
           indMain: {},
@@ -84,6 +85,7 @@ export default {
                 axios.get('/classes/taxes')
               ])
               this.objectId = res[0].data.results[0].objectId
+              this.units = res[0].data.results[0].units
               this.indDate = res[0].data.results[0].createdAt.split('T')[0]
               const rawUnits = Array.from(Object.values(res[0].data.results[0].units))
               this.taxes = res[1].data.results[0]
@@ -115,6 +117,7 @@ export default {
         },
         async togglePaidUnpaid(clIndex) {
           this.indClients[clIndex - 1].paid = this.indClients[clIndex -1].paid ? false : true
+          this.units[clIndex].paid = this.indClients[clIndex - 1].paid
           const toastData = {
               message: 'info',
               type: 'is-info',
@@ -123,9 +126,11 @@ export default {
               duration: 2000,
               position: 'bottom-right',
           }
+          const updatedUnits = { units: this.units }
+          console.log(updatedUnits)
 
         //   await axios
-        //     .put('/classes/indications/' + this.objectId, {units: this.indClients})
+        //     .put('/classes/indications/' + this.objectId, updatedUnits)
         //     .then(response => {
         //         toastData.message = 'Плащането е успешно коригирано.'
         //         toastData.type = 'is-success'
@@ -139,6 +144,7 @@ export default {
         //         toast(toastData)
 
 		    // 		this.indClients[clIndex - 1].paid = this.indClients[clIndex -1].paid ? false : true
+        //    this.units[clIndex].paid = this.indClients[clIndex - 1].paid
         //     })
         },
         onDownload() {

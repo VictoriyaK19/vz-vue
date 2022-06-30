@@ -44,6 +44,7 @@ export default {
     data() {
         return {
             indClients: [],
+            units: {}
         }
     },
     mounted() {
@@ -80,6 +81,8 @@ export default {
             this.indClients.forEach(cl => {
                 if (cl.new < cl.old) {
                     err = 'Невалидни показания'
+                }else {
+                    this.units[cl.elN] = cl
                 }
             })
 
@@ -88,6 +91,9 @@ export default {
                 toastData.type = 'is-danger'
                 toast(toastData)
             } else {
+                const newUnits = { units: this.units}
+                console.log(newUnits.units)
+
                 toastData.message = 'Промените бяха записани успешно.'
                 toastData.type = 'is-success'
                 toast(toastData)
@@ -96,7 +102,7 @@ export default {
             // this must replace in "else" - block
 
             // await axios
-            //     .post('/classes/indications/', {units,})
+            //     .post('/classes/indications/', newUnits)
             //     .then(response => {
             //         toastData.message = 'Промените бяха записани успешно.'
             //         toastData.type = 'is-success'
