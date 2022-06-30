@@ -1,12 +1,14 @@
 <template>
     <div class="container">
-        <div class="columns is-multiline">
-            <div class="column is-12">
-                <h1 class="title">Потребител {{ client.name }}</h1>
+        <!-- <div class="columns is-multiline"> -->
+            <div class=" box columns has-background-info-light">
+                <h1 class="title">Потребител <strong class="has-text-info">{{ client.name }}</strong></h1>
 
             </div>
-
-            <chart :type="'bar'" :height="100" :data="{labels, datasets}" :options="options"></chart>
+            
+            <div class="box mt-6">
+                <chart :type="'bar'" :height="100" :data="{labels, datasets}" :options="options"></chart>
+            </div>
 
             <!-- <div class="column is-6">
                 <div class="box" v-for="p in client.period.length" v-bind:key="p" v-bind:class="!client.data[p-1].paid ? 'has-background-danger-light': ''">
@@ -17,7 +19,7 @@
             </div> -->
 
         </div>
-    </div>
+    <!-- </div> -->
 </template>
 
 <script>

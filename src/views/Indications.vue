@@ -1,9 +1,10 @@
 <template>
   <div class="container">
-    <h1 class="is-size-4 has-text-weight-bold">Показания от {{ indDate }}</h1>
-    <h3>Сумите са формирани при цена за киловат: {{ taxes.kWprice }}.лв и такса: {{taxes.tax}}лв.</h3>
-    <h3>Информация за плащания: Н.Георгиева / +359 885 805 644</h3>
-    <br/>
+    <div class="box has-background-info-light">
+      <h1 class="is-size-4 has-text-weight-bold">Показания от {{ indDate }}</h1>
+      <h3>Сумите са формирани при цена за киловат: {{ taxes.kWprice }}.лв и такса: {{taxes.tax}}лв.</h3>
+      <h3>Информация за плащания: Н.Георгиева / +359 885 805 644</h3>
+    </div>
 
     <div class="column is-12">
       <table class="table is-fullwidth">

@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-        <div class="columns">
+        <div class="box columns has-background-info-light">
             <div class="column">
                 <h1 class="title">Редакция на таксите</h1>
             </div>

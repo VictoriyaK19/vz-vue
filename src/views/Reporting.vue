@@ -1,6 +1,8 @@
 <template>
     <div class="container">
-    <h1 class="is-size-4 has-text-weight-bold">Отчитане на показания</h1>
+        <div class="box has-background-info-light">
+            <h1 class="is-size-4 has-text-weight-bold">Отчитане на показания</h1>
+        </div>
     <br/>
 
     <div class="columns">
@@ -26,7 +28,7 @@
         </table>
     </div>
 
-    <div class="box has-text-centered">
+    <div class="box has-text-centered has-background-info-light">
         <button @click="onSave" class="button is-info">Запиши показанията</button>
     </div>
   </div>

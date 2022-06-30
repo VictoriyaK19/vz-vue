@@ -1,8 +1,8 @@
 <template>
     <div class="container">
-        <div class="columns">
+        <div class="box columns has-background-info-light">
             <div class="column is-4 is-offset-4">
-                <h1 class="title">Администрация</h1>
+                <h1 class="title mt-6 mb-6">Администрация</h1>
 
                 <form @submit.prevent="submitForm">
                     <div class="field">

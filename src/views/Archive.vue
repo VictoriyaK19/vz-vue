@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="box columns">
+        <div class="box columns has-background-info-light">
             <div class="column">
                 <h1 class="is-size-4 has-text-weight-bold">Архив</h1>
             </div>

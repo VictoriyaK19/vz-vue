@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="columns">
+        <div class=" box columns has-background-info-light">
             <div class="column">
                 <h1 class="title">Редакция на Потребител</h1>
                 <h3 class="title has-text-info">{{client.name}}</h3>
