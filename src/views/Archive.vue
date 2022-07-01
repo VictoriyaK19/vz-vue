@@ -33,6 +33,7 @@
                             <th class="has-text-centered">Потребител</th>
                             <th class="has-text-centered">Старо</th>
                             <th class="has-text-centered">Ново</th>
+                            <th class="has-text-centered">Разлика</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,6 +42,7 @@
                             <td>{{ cl.name }}</td>
                             <td class="has-text-centered">{{ cl.old }}</td>
                             <td class="has-text-centered">{{ cl.new }}</td>
+                            <td class="has-text-centered">{{ cl.new - cl.old }}</td>
                         </tr>
                     </tbody>
                 </table>
