@@ -76,7 +76,6 @@ export default {
                 duration: 2000,
                 position: 'bottom-right',
             }
-            const units = this.indClients
             let err = ''
             this.indClients.forEach(cl => {
                 if (cl.new < cl.old) {
@@ -100,6 +99,7 @@ export default {
             }
 
             // this must replace in "else" - block
+            // this.$store.commit('setLoading', true)
 
             // await axios
             //     .post('/classes/indications/', newUnits)
@@ -116,6 +116,7 @@ export default {
             //         toastData.type = 'is-danger'
             //         toast(toastData)
             //     })
+            // this.$store.commit('setLoading', false)
             
         }
     }

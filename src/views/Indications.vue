@@ -55,7 +55,7 @@ export default {
               axios.get('/classes/indication?order=-createdAt&limit=1'),
               axios.get('/classes/taxes')
             ])
-            
+            // this.indDate = new Date(res[0].data.results[0].createdAt).toLocaleDateString()
             this.indDate = res[0].data.results[0].createdAt.split('T')[0]
             this.indClients = Array.from(Object.values(res[0].data.results[0].units))
             this.indClients = this.indClients.filter(unit => unit.elN != 99)

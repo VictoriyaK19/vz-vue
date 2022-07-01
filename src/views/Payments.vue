@@ -104,16 +104,13 @@ export default {
             this.$store.commit('setLoading', false)
         },
         calculateCash() {
-          const totalSum = this.indClients.map(cl =>((cl.new - cl.old) * this.taxes.kWprice + this.taxes.tax)).reduce((a, b) => a + b, 0)
           const paid = this.indClients.filter(cl => cl.paid)
-          const cash = paid.map(cl =>((cl.new - cl.old) * this.taxes.kWprice + this.taxes.tax)).reduce((a, b) => a + b, 0)
-          this.cash = cash
-          this.totalSum = totalSum
+          this.cash = paid.map(cl =>((cl.new - cl.old) * this.taxes.kWprice + this.taxes.tax)).reduce((a, b) => a + b, 0)
+          this.totalSum = this.indClients.map(cl =>((cl.new - cl.old) * this.taxes.kWprice + this.taxes.tax)).reduce((a, b) => a + b, 0)
         },
         calculateConsumation() {
           const cosumations = this.indClients.map(cl => cl.new - cl.old)
-          const consumed = cosumations.reduce((a, b) => a + b, 0)
-          this.consumed = consumed
+          this.consumed = cosumations.reduce((a, b) => a + b, 0)
         },
         async togglePaidUnpaid(clIndex) {
           this.indClients[clIndex - 1].paid = this.indClients[clIndex -1].paid ? false : true
@@ -128,7 +125,7 @@ export default {
           }
           const updatedUnits = { units: this.units }
           console.log(updatedUnits)
-
+            // this.$store.commit('setLoading', true)
         //   await axios
         //     .put('/classes/indications/' + this.objectId, updatedUnits)
         //     .then(response => {
@@ -146,6 +143,8 @@ export default {
 		    // 		this.indClients[clIndex - 1].paid = this.indClients[clIndex -1].paid ? false : true
         //    this.units[clIndex].paid = this.indClients[clIndex - 1].paid
         //     })
+            // this.$store.commit('setLoading', false)
+
         },
         onDownload() {
           const fileName =`indications-${this.indDate}.csv`
