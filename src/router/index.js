@@ -12,6 +12,7 @@ import Archive from '../views/Archive.vue'
 import Reporting from '../views/Reporting.vue'
 import AddClient from '../views/AddClient.vue'
 import ErrorView from '../views/ErrorView.vue'
+import Dashboard from '../views/Dashboard.vue'
 
 const routes = [
   {
@@ -86,6 +87,11 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: Dashboard,
   },
   {
     path: '/:catchAll(.*)',
