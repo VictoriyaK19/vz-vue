@@ -2,7 +2,7 @@
     <nav class="navbar is-dark">
         <div class="navbar-brand">
             <router-link to="/" class="navbar-item">
-                <strong>ВЗ</strong>
+                <strong>ВЗ Ветово</strong>
             </router-link>
             <template v-if="$store.state.user">
                 <p class="navbar-item has-text-info">Привет, {{$store.state.user}}</p>
@@ -14,7 +14,7 @@
                 <router-link to="/indications" class="navbar-item"><strong>Показания</strong></router-link>
                 <router-link to="/dashboard" class="navbar-item"><strong>Табло</strong></router-link>
                 <router-link to="/archive" class="navbar-item"><strong>Архив</strong></router-link>
-                <router-link to="/about" class="navbar-item"><strong>Контакти</strong></router-link>
+                <!-- <router-link to="/about" class="navbar-item"><strong>Контакти</strong></router-link> -->
 
                 <template v-if="$store.state.user">
                     <div class="navbar-item has-dropdown is-hoverable">

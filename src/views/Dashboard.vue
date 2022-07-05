@@ -46,7 +46,7 @@
                             <p>{{ note.author }}</p>
                         </div>
 
-                        <div v-if="$store.state.user" class="has-text-right">
+                        <div v-if="$store.state.user" class="has-text-right mt-2">
                             <div @click="dellNote(note.objectId)" class="button is-small is-danger is-light">Изтрий</div>
                         </div>
                     </div>
@@ -76,6 +76,14 @@ export default {
           notes: [],
           content: '',
           author: '',
+          toastData: {
+            message: 'Попълни полетата!',
+            type: 'is-danger',
+            dismissible: true,
+            pauseOnHover: true,
+            duration: 2000,
+            position: 'bottom-right',
+          }
       }
     },
     mounted() {
@@ -96,14 +104,6 @@ export default {
             this.$store.commit('setLoading', false)
         },
         async addNote() {
-            const toastData = {
-                message: 'Попълни полетата!',
-                type: 'is-danger',
-                dismissible: true,
-                pauseOnHover: true,
-                duration: 2000,
-                position: 'bottom-right',
-            }
             if (this.content != '' && this.author != '') {
                 const data = {
                     content: this.content,
@@ -114,9 +114,9 @@ export default {
                 await axios
                     .post('/classes/posts/', data)
                     .then(response => {
-                        toastData.message = 'Успешно публикуване.'
-                        toastData.type = 'is-success'
-                        toast(toastData)
+                        this.toastData.message = 'Успешно публикуване.'
+                        this.toastData.type = 'is-success'
+                        toast(this.toastData)
 
                         const newNote = {
                             content: this.content,
@@ -125,40 +125,38 @@ export default {
                             createdAt: response.data.createdAt
                         }
                         this.notes.unshift(newNote)
+                        this.content = ''
+                        this.author = ''
                     })
                     .catch(error => {
                         console.log(error)
-                        toastData.message = 'Неуспешно публикуване!'
-                        toast(toastData)
+                        this.toastData.message = 'Неуспешно публикуване!'
+                        this.toastData.type = 'is-danger'
+                        toast(this.toastData)
                     })
                 this.$store.commit('setLoading', false)
             }else {
-                toast(toastData)
+                this.toastData.message = 'Попълни полетата!'
+                this.toastData.type = 'is-danger'
+                toast(this.toastData)
             }
         },
         async dellNote(id) {
-            const toastData = {
-                message: 'Неуспешно изтриване!',
-                type: 'is-danger',
-                dismissible: true,
-                pauseOnHover: true,
-                duration: 2000,
-                position: 'bottom-right',
-            }
-            
             this.$store.commit('setLoading', true)
 
             await axios
                 .delete('/classes/posts/'+ id)
                 .then(response => {
                     this.notes = this.notes.filter(n => n.objectId != id)
-                    toastData.message = 'Успешно изтрито.'
-                    toastData.type = 'is-warning'
-                    toast(toastData)
+                    this.toastData.message = 'Успешно изтрито.'
+                    this.toastData.type = 'is-warning'
+                    toast(this.toastData)
                 })
                 .catch(error => {
                     console.log(error)
-                    toast(toastData)
+                    this.toastData.message = 'Неуспешно изтриване!'
+                    this.toastData.type = 'is-danger'
+                    toast(this.toastData)
                 })
 
             this.$store.commit('setLoading', false)

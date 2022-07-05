@@ -87,7 +87,7 @@ export default {
               this.objectId = res[0].data.results[0].objectId
               this.units = res[0].data.results[0].units
               this.indDate = res[0].data.results[0].createdAt.split('T')[0]
-              const rawUnits = Array.from(Object.values(res[0].data.results[0].units))
+              const rawUnits = Array.from(Object.values(this.units))
               this.taxes = res[1].data.results[0]
 
               this.indMain = rawUnits.pop()
