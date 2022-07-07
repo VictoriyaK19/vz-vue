@@ -123,27 +123,26 @@ export default {
               duration: 2000,
               position: 'bottom-right',
           }
-          const updatedUnits = { units: this.units }
-          console.log(updatedUnits)
-            // this.$store.commit('setLoading', true)
-        //   await axios
-        //     .put('/classes/indications/' + this.objectId, updatedUnits)
-        //     .then(response => {
-        //         toastData.message = 'Плащането е успешно коригирано.'
-        //         toastData.type = 'is-success'
-        //         toast(toastData)
-        //     })
-        //     .catch(error => {
-        //         console.log(error)
+          
+          this.$store.commit('setLoading', true)
+          await axios
+            .put('/classes/indication/' + this.objectId, { units: this.units })
+            .then(response => {
+                toastData.message = 'Плащането е успешно коригирано.'
+                toastData.type = 'is-success'
+                toast(toastData)
+            })
+            .catch(error => {
+              console.log(error)
 
-		    // 		toastData.message = 'Неуспешна корекция!'
-        //         toastData.type = 'is-danger'
-        //         toast(toastData)
+              toastData.message = 'Неуспешна корекция!'
+              toastData.type = 'is-danger'
+              toast(toastData)
 
-		    // 		this.indClients[clIndex - 1].paid = this.indClients[clIndex -1].paid ? false : true
-        //    this.units[clIndex].paid = this.indClients[clIndex - 1].paid
-        //     })
-            // this.$store.commit('setLoading', false)
+              this.indClients[clIndex - 1].paid = this.indClients[clIndex -1].paid ? false : true
+              this.units[clIndex].paid = this.indClients[clIndex - 1].paid
+            })
+          this.$store.commit('setLoading', false)
 
         },
         onDownload() {

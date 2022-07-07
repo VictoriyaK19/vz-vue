@@ -3,19 +3,21 @@
         <div class="box columns has-background-info-light">
             <div class="column">
                 <h1 class="title">Редакция на таксите</h1>
+                <p class="has-text-danger">Промяната на таксите да се извършва непосредствено преди отчитане и след събрани задълженията!</p>
+                <p class="has-text-danger">В противен случай може да се получат разминавания в касовата наличност и некоректни вземания!</p>
             </div>
 
             <div class="column is-one-fifth">
                 <form @submit.prevent="submitForm">
                     <div class="field">
-                        <label>Такса</label>
+                        <label>Такса (лв.)</label>
                         <div class="control">
                             <input type="decimal" class="input" v-model="taxes.tax">
                         </div>
                     </div>
 
                     <div class="field">
-                        <label>Цена на киловат</label>
+                        <label>Цена на киловат (лв.)</label>
                         <div class="control">
                             <input type="decimal" class="input" v-model="taxes.kWprice">
                         </div>

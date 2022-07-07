@@ -88,7 +88,6 @@ export default {
                 .then(response => {
                     this.data = response.data.results[0]
                     this.client = response.data.results[0].units[this.clientID]
-                    console.log(this.data.units)
                 })
                 .catch(err => {
                     console.log(err)
@@ -106,29 +105,28 @@ export default {
                 position: 'bottom-right',
             }
             this.data.units[this.clientID] = this.client
-            const updatedUnits = { units: this.data.units }
 
-            console.log(updatedUnits.units)
-            console.log(this.data.objectId)
+            if (this.client.old >= 0 && this.client.new >= this.client.old && this.client.name != '') {
+                await axios
+                    .put('/classes/indication/' + this.data.objectId, { units: this.data.units })
+                    .then(response => {
+                        toastData.message = 'Промените бяха записани успешно.'
+                        toastData.type = 'is-success'
+                        toast(toastData)
 
-            // if (this.client.old >= 0 && this.client.new >= this.client.old && this.client.name != '') {
-            //     await axios
-            //         .put('/classes/indications/' + this.data.objectId, updatedUnits)
-            //         .then(response => {
-            //             toastData.message = 'Промените бяха записани успешно.'
-            //             toastData.type = 'is-success'
-            //             toast(toastData)
-
-            //             this.$router.push('/indications')
-            //         })
-            //         .catch(error => {
-            //             console.log(error)
-            //         })
-            // } else {
-            //     toastData.message = 'Липсващи или невалидни данни.'
-            //     toastData.type = 'is-danger'
-            //     toast(toastData)
-            // }
+                        this.$router.push('/indications')
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        toastData.message = 'Неуспешна редакция!'
+                        toastData.type = 'is-danger'
+                        toast(toastData)
+                    })
+            } else {
+                toastData.message = 'Липсващи или невалидни данни.'
+                toastData.type = 'is-danger'
+                toast(toastData)
+            }
         }
     }
 }
