@@ -12,6 +12,9 @@
               <tr>
                   <th class="has-text-centered">ел.№</th>
                   <th class="has-text-centered">Потребител</th>
+                  <th class="has-text-centered">Старо</th>
+                  <th class="has-text-centered">Ново</th>
+                  <th class="has-text-centered">Разлика</th>
                   <th class="has-text-centered">Сума</th>
                   <th></th>
               </tr>
@@ -20,6 +23,9 @@
               <tr v-for="cl in indClients" v-bind:key="cl.elN" v-bind:class="!cl.paid ? 'has-background-danger-light': ''">
                   <td class="has-text-centered">{{ cl.elN }}</td>
                   <td>{{ cl.name }}</td>
+                  <td class="has-text-centered">{{ cl.old }}</td>
+                  <td class="has-text-centered">{{ cl.new }}</td>
+                  <td class="has-text-centered">{{ cl.new - cl.old }}</td>
                   <td class="has-text-centered">{{ ((cl.new - cl.old) * taxes.kWprice + taxes.tax).toFixed(2) }}</td>
                   <td>
                       <router-link :to="{ name: 'client', params: { id: cl.elN }}" class="is-italic">инфо</router-link>

@@ -79,7 +79,7 @@ export default {
             let err = ''
             this.indClients.forEach(cl => {
                 if (cl.new < cl.old) {
-                    err = 'Невалидни показания'
+                    err = 'Въведени невалидни показания!'
                 }else {
                     this.units[cl.elN] = cl
                 }
@@ -90,34 +90,24 @@ export default {
                 toastData.type = 'is-danger'
                 toast(toastData)
             } else {
-                const newUnits = { units: this.units}
-                console.log(newUnits.units)
+                this.$store.commit('setLoading', true)
 
-                toastData.message = 'Промените бяха записани успешно.'
-                toastData.type = 'is-success'
-                toast(toastData)
+                await axios
+                    .post('/classes/indication/', { units: this.units })
+                    .then(response => {
+                        toastData.message = 'Отчитането успешно.'
+                        toastData.type = 'is-success'
+                        toast(toastData)
+
+                        this.$router.push('/indications')
+                    })
+                    .catch(error => {
+                        console.log(error)
+                        toastData.message = 'Неуспешно отчитане!'
+                        toastData.type = 'is-danger'
+                        toast(toastData)
+                    })
             }
-
-            // this must replace in "else" - block
-            // this.$store.commit('setLoading', true)
-
-            // await axios
-            //     .post('/classes/indications/', newUnits)
-            //     .then(response => {
-            //         toastData.message = 'Промените бяха записани успешно.'
-            //         toastData.type = 'is-success'
-            //         toast(toastData)
-
-            //         this.$router.push('/indications')
-            //     })
-            //     .catch(error => {
-            //         console.log(error)
-            //         toastData.message = 'Неуспешен запис'
-            //         toastData.type = 'is-danger'
-            //         toast(toastData)
-            //     })
-            // this.$store.commit('setLoading', false)
-            
         }
     }
 }
