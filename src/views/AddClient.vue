@@ -56,6 +56,7 @@
 <script>
 import axios from 'axios'
 import { toast } from 'bulma-toast'
+import toastData from '../helpers/ToastData'
 
 export default {
     name: 'AddClient',
@@ -95,14 +96,6 @@ export default {
           this.$store.commit('setLoading', false)
       },
       async submitForm() {
-            const toastData = {
-                message: 'info',
-                type: 'is-info',
-                dismissible: true,
-                pauseOnHover: true,
-                duration: 2000,
-                position: 'bottom-right',
-            }
             this.units[this.newClient.elN]= this.newClient
             const  updatedUnits = { units: this.units }
             

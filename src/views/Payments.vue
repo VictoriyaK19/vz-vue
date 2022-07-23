@@ -56,6 +56,7 @@
 <script>
 import axios from 'axios'
 import { toast } from 'bulma-toast'
+import toastData from '../helpers/ToastData'
 
 export default {
     name: 'Payments',
@@ -115,14 +116,6 @@ export default {
         async togglePaidUnpaid(clIndex) {
           this.indClients[clIndex - 1].paid = this.indClients[clIndex -1].paid ? false : true
           this.units[clIndex].paid = this.indClients[clIndex - 1].paid
-          const toastData = {
-              message: 'info',
-              type: 'is-info',
-              dismissible: true,
-              pauseOnHover: true,
-              duration: 2000,
-              position: 'bottom-right',
-          }
           
           this.$store.commit('setLoading', true)
           await axios

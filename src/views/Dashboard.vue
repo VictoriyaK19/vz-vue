@@ -67,6 +67,7 @@
 <script>
 import axios from 'axios'
 import { toast } from 'bulma-toast'
+import toastData from '../helpers/ToastData'
 
 
 export default {
@@ -76,14 +77,6 @@ export default {
           notes: [],
           content: '',
           author: '',
-          toastData: {
-            message: 'Попълни полетата!',
-            type: 'is-danger',
-            dismissible: true,
-            pauseOnHover: true,
-            duration: 2000,
-            position: 'bottom-right',
-          }
       }
     },
     mounted() {
@@ -114,9 +107,9 @@ export default {
                 await axios
                     .post('/classes/posts/', data)
                     .then(response => {
-                        this.toastData.message = 'Успешно публикуване.'
-                        this.toastData.type = 'is-success'
-                        toast(this.toastData)
+                        toastData.message = 'Успешно публикуване.'
+                        toastData.type = 'is-success'
+                        toast(toastData)
 
                         const newNote = {
                             content: this.content,
@@ -130,15 +123,15 @@ export default {
                     })
                     .catch(error => {
                         console.log(error)
-                        this.toastData.message = 'Неуспешно публикуване!'
-                        this.toastData.type = 'is-danger'
-                        toast(this.toastData)
+                        toastData.message = 'Неуспешно публикуване!'
+                        toastData.type = 'is-danger'
+                        toast(toastData)
                     })
                 this.$store.commit('setLoading', false)
             }else {
-                this.toastData.message = 'Попълни полетата!'
-                this.toastData.type = 'is-danger'
-                toast(this.toastData)
+                toastData.message = 'Попълни полетата!'
+                toastData.type = 'is-danger'
+                toast(toastData)
             }
         },
         async dellNote(id) {
@@ -148,15 +141,15 @@ export default {
                 .delete('/classes/posts/'+ id)
                 .then(response => {
                     this.notes = this.notes.filter(n => n.objectId != id)
-                    this.toastData.message = 'Успешно изтрито.'
-                    this.toastData.type = 'is-warning'
-                    toast(this.toastData)
+                    toastData.message = 'Успешно изтрито.'
+                    toastData.type = 'is-warning'
+                    toast(toastData)
                 })
                 .catch(error => {
                     console.log(error)
-                    this.toastData.message = 'Неуспешно изтриване!'
-                    this.toastData.type = 'is-danger'
-                    toast(this.toastData)
+                    toastData.message = 'Неуспешно изтриване!'
+                    toastData.type = 'is-danger'
+                    toast(toastData)
                 })
 
             this.$store.commit('setLoading', false)

@@ -37,6 +37,7 @@
 <script>
 import axios from 'axios'
 import { toast } from 'bulma-toast'
+import toastData from '../helpers/ToastData'
 
 export default {
     name: 'Taxes',
@@ -64,14 +65,6 @@ export default {
             this.$store.commit('setLoading', false)
         },
         async submitForm() {
-            const toastData = {
-                message: 'info',
-                type: 'is-info',
-                dismissible: true,
-                pauseOnHover: true,
-                duration: 2000,
-                position: 'bottom-right',
-            }
                 
             if (Number(this.taxes.tax) >= 0 && Number(this.taxes.kWprice) > 0) {
                 this.$store.commit('setLoading', true)

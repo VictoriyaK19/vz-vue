@@ -57,6 +57,7 @@
 <script>
 import axios from 'axios'
 import { toast } from 'bulma-toast'
+import toastData from '../helpers/ToastData'
 
 export default {
     name: 'EditClient',
@@ -96,14 +97,6 @@ export default {
             this.$store.commit('setLoading', false)
         },
         async submitForm() {
-            const toastData = {
-                message: 'info',
-                type: 'is-info',
-                dismissible: true,
-                pauseOnHover: true,
-                duration: 2000,
-                position: 'bottom-right',
-            }
             this.data.units[this.clientID] = this.client
 
             if (this.client.old >= 0 && this.client.new >= this.client.old && this.client.name != '') {
