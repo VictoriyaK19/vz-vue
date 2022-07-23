@@ -16,12 +16,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="cl in indClients" v-bind:key="cl.elN">
+                <tr v-for="cl in indClients" v-bind:key="cl.elN" >
                     <td class="has-text-right"><span class="mt-5">{{ cl.name }}</span></td>
                     <td class="has-text-centered">{{ cl.elN }}</td>
                     <td class="has-text-centered">{{ cl.old }}</td>
                     <td class="has-text-left">
-                        <input type="number" class="input is-small" style="width: 50%;" v-model="cl.new">
+                        <input type="number" v-bind:class="cl.new<cl.old ? 'input is-small has-background-danger-light': 'input is-small'" style="width: 50%;" v-model="cl.new">
                     </td>
                 </tr>
             </tbody>
@@ -37,6 +37,7 @@
 <script>
 import axios from 'axios'
 import { toast } from 'bulma-toast'
+import toastData from '../helpers/ToastData'
 
 
 export default {
@@ -68,14 +69,6 @@ export default {
             this.$store.commit('setLoading', false)
         },
         async onSave() {
-            const toastData = {
-                message: 'info',
-                type: 'is-info',
-                dismissible: true,
-                pauseOnHover: true,
-                duration: 2000,
-                position: 'bottom-right',
-            }
             let err = ''
             this.indClients.forEach(cl => {
                 if (cl.new < cl.old) {
@@ -91,7 +84,7 @@ export default {
                 toast(toastData)
             } else {
                 this.$store.commit('setLoading', true)
-                
+
                 await axios
                     .post('/classes/indication/', { units: this.units })
                     .then(response => {
