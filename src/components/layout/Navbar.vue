@@ -47,6 +47,8 @@ export default {
     name: 'Navbar',
     methods: {
         async logout() {
+            this.$store.commit('setLoading', true)
+
             await axios
                 .post('/logout')
                 .then(response => {
@@ -63,6 +65,8 @@ export default {
             axios.defaults.headers['X-Parse-Session-Token'] = ''
 
             this.$router.push('/')
+
+            this.$store.commit('setLoading', false)
         }
     }
 }

@@ -91,7 +91,7 @@ export default {
                 toast(toastData)
             } else {
                 this.$store.commit('setLoading', true)
-
+                
                 await axios
                     .post('/classes/indication/', { units: this.units })
                     .then(response => {
@@ -107,6 +107,8 @@ export default {
                         toastData.type = 'is-danger'
                         toast(toastData)
                     })
+
+                this.$store.commit('setLoading', false)
             }
         }
     }
