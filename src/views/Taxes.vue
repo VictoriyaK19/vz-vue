@@ -23,6 +23,20 @@
                         </div>
                     </div>
 
+                    <div class="field">
+                        <label>Касиер</label>
+                        <div class="control">
+                            <input type="decimal" class="input" v-model="taxes.cashierName">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>Телефон за връзка</label>
+                        <div class="control">
+                            <input type="decimal" class="input" v-model="taxes.cashierPhone">
+                        </div>
+                    </div>
+
                     <div class="field mt-5">
                         <div class="control">
                             <button class="button is-info">Запиши</button>
@@ -66,12 +80,14 @@ export default {
         },
         async submitForm() {
                 
-            if (Number(this.taxes.tax) >= 0 && Number(this.taxes.kWprice) > 0) {
+            if (Number(this.taxes.tax) >= 0 && Number(this.taxes.kWprice) > 0 && this.taxes.cashierName && this.taxes.cashierPhone) {
                 this.$store.commit('setLoading', true)
 
                 const newdata = {
                     tax: Number(this.taxes.tax),
-                    kWprice: Number(this.taxes.kWprice)
+                    kWprice: Number(this.taxes.kWprice),
+                    cashierName: this.taxes.cashierName,
+                    cashierPhone: this.taxes.cashierPhone
                 }
                 await axios
                     .put('/classes/taxes/' + this.taxes.objectId, newdata)

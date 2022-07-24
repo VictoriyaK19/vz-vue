@@ -21,7 +21,10 @@
                     <td class="has-text-centered">{{ cl.elN }}</td>
                     <td class="has-text-centered">{{ cl.old }}</td>
                     <td class="has-text-left">
-                        <input type="number" v-bind:class="cl.new<cl.old ? 'input is-small has-background-danger-light': 'input is-small'" style="width: 50%;" v-model="cl.new">
+                        <input type="number" 
+                        v-bind:class="cl.new<cl.old ? 'input is-small has-background-danger-light': 'input is-small'" 
+                        style="width: 50%;" 
+                        v-model="cl.new">
                     </td>
                 </tr>
             </tbody>
