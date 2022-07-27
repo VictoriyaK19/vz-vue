@@ -11,9 +11,6 @@ import axiios from 'axios'
 //   AppKey: process.env.S3_KEY
 // });
 
-var appId = process.env.App_APP_ID
-// var appKey = process.env.APP_KEY
-console.log(appId)
 
 axiios.defaults.baseURL = 'https://parseapi.back4app.com'
 // axiios.defaults.headers = {
@@ -27,3 +24,7 @@ axiios.defaults.headers = {
 }
 
 createApp(App).use(store).use(router, axiios).mount('#app')
+
+var appId = process.env.APP_ID
+// var appKey = process.env.APP_KEY
+console.log(appId)
