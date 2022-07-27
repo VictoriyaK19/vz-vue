@@ -7,8 +7,8 @@ import axiios from 'axios'
 const aws = require('aws-sdk');
 
 let s3 = new aws.S3({
-  AppId: process.env.APP_ID,
-  AppKey: process.env.APP_KEY
+  AppId: process.env.S3_ID,
+  AppKey: process.env.S3_KEY
 });
 
 axiios.defaults.baseURL = 'https://parseapi.back4app.com'
