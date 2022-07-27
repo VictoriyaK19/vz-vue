@@ -13,8 +13,8 @@ let s3 = new aws.S3({
 
 axiios.defaults.baseURL = 'https://parseapi.back4app.com'
 axiios.defaults.headers = {
-    'X-Parse-Application-Id': AppId,
-    'X-Parse-REST-API-Key': AppKey
+    'X-Parse-Application-Id': s3.AppId,
+    'X-Parse-REST-API-Key': s3.AppKey
 }
 
 console.log(AppId)
