@@ -25,6 +25,6 @@ axiios.defaults.headers = {
 
 createApp(App).use(store).use(router, axiios).mount('#app')
 
-var appId = process.env.APP_ID
+var appId = process.env.App_ID
 // var appKey = process.env.APP_KEY
 console.log(appId)
