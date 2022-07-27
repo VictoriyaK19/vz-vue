@@ -17,8 +17,7 @@ axiios.defaults.headers = {
     'X-Parse-REST-API-Key': s3.AppKey
 }
 
-console.log(AppId)
-console.log(AppKey)
+
 // axiios.defaults.headers = {
 //     'X-Parse-Application-Id': 'e29amB1TcYqKYQlJDSvtbpHTFnMMdRQiSzEMVDn3',
 //     'X-Parse-REST-API-Key': '6rzQoexbCEallVe1wHp0cUXSpNXBSWQgU1LOSq9y'
