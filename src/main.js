@@ -11,7 +11,7 @@ import axiios from 'axios'
 //   AppKey: process.env.S3_KEY
 // });
 
-var appId = process.env.vz-vetovo_APP_ID
+var appId = process.env.App_APP_ID
 // var appKey = process.env.APP_KEY
 console.log(appId)
 
