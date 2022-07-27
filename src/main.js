@@ -4,14 +4,14 @@ import router from './router'
 import store from './store'
 import axiios from 'axios'
 
-const aws = require('aws-sdk');
+// const aws = require('aws-sdk');
 
-let s3 = new aws.S3({
-  AppId: process.env.S3_ID,
-  AppKey: process.env.S3_KEY
-});
-const appId = process.env.APP_ID
-const appKey = process.env.APP_KEY
+// let s3 = new aws.S3({
+//   AppId: process.env.S3_ID,
+//   AppKey: process.env.S3_KEY
+// });
+var appId = process.env.APP_ID
+var appKey = process.env.APP_KEY
 
 axiios.defaults.baseURL = 'https://parseapi.back4app.com'
 axiios.defaults.headers = {
