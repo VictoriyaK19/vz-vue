@@ -37,7 +37,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="cl in indClients" v-bind:key="cl.elN">
+                        <tr v-for="cl in indClients" v-bind:key="cl.elN" @click="toggleRow(cl.elN)" :class="{'has-background-info-light': selectedRows.includes(cl.elN)}">
                             <td class="has-text-centered">{{ cl.elN }}</td>
                             <td>{{ cl.name }}</td>
                             <td class="has-text-centered">{{ cl.old }}</td>
@@ -68,7 +68,8 @@ export default {
           dates: [],
           archives: [],
           indDate: '',
-          indClients: []
+          indClients: [],
+          selectedRows: []
       }
     },
     mounted() {
@@ -93,6 +94,13 @@ export default {
         fromIndex(i) {
             this.indDate = this.dates[i]
             this.indClients = this.archives[i]
+        },
+        toggleRow(rowId){
+            if (this.selectedRows.includes(rowId)) {
+                this.selectedRows.splice(this.selectedRows.indexOf(rowId), 1);
+            } else {
+                this.selectedRows.push(rowId);
+            }
         }
     }
 
