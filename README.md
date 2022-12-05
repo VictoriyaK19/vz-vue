@@ -1,5 +1,5 @@
 # vz-vue
-[Live Demo on Heroku](https://vz-vetovo.herokuapp.com)
+[Live Demo on Heroku](https://)
 
 ## Project setup
 ```
