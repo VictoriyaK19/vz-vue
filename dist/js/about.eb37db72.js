@@ -1,2 +1,0 @@
-"use strict";(self["webpackChunkvz_vue"]=self["webpackChunkvz_vue"]||[]).push([[443],{8153:function(e,t,u){u.r(t),u.d(t,{default:function(){return h}});var c=u(3396);const n={class:"about"},r=(0,c._)("h1",{class:"title"},"Контакти",-1),s=(0,c._)("a",{href:"https://www.facebook.com/groups/780031776261110"},"Facebook",-1),a=[r,s];function o(e,t){return(0,c.wg)(),(0,c.iD)("div",n,a)}var f=u(89);const v={},i=(0,f.Z)(v,[["render",o]]);var h=i}}]);
-//# sourceMappingURL=about.eb37db72.js.map
