@@ -1,5 +1,5 @@
 # vz-vue
-[Live Demo on Heroku](https://)
+[Live](https://vz-vue.firebaseapp.com/)
 
 ## Project setup
 ```
