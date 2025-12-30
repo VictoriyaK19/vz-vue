@@ -2,7 +2,7 @@
   <div class="container">
     <div class="box has-background-info-light">
       <h1 class="is-size-4 has-text-weight-bold">Показания от {{ indDate }}</h1>
-      <h3>Сумите са формирани при цена за киловат: {{ taxes.kWprice }}.лв и такса: {{taxes.tax}}лв.</h3>
+      <h3>Сумите са формирани при цена за киловат: {{ taxes.kWprice }}лв/{{ toEuro(taxes.kWprice) }}€ и такса: {{taxes.tax}}лв/{{ toEuro(taxes.tax) }}€</h3>
       <h3>Информация за плащания: {{ taxes.cashierName }} <i class="fas fa-phone"></i> {{ taxes.cashierPhone }}</h3>
     </div>
 
@@ -26,7 +26,7 @@
                   <td class="has-text-centered">{{ cl.old }}</td>
                   <td class="has-text-centered">{{ cl.new }}</td>
                   <td class="has-text-centered">{{ cl.new - cl.old }}</td>
-                  <td class="has-text-centered">{{ ((cl.new - cl.old) * taxes.kWprice + taxes.tax).toFixed(2) }}</td>
+                  <td class="has-text-centered">{{ getBill(cl.new, cl.old) }}</td>
                   <td>
                       <router-link :to="{ name: 'client', params: { id: cl.elN }}" class="is-italic">инфо</router-link>
                   </td>
@@ -53,6 +53,14 @@ export default {
       this.getIndications()
   },
   methods: {
+      toEuro(value) {
+          const fixing = 1.95583;
+          return (value / fixing).toFixed(2);
+      },
+      getBill(newInd, oldInd) {
+          const levaBill = (Number(newInd) - Number(oldInd)) * this.taxes.kWprice + this.taxes.tax;
+          return `${levaBill.toFixed(2)}лв/${this.toEuro(levaBill)}€`;
+      },
       async getIndications() {
           this.$store.commit('setLoading', true)
 
