@@ -2,7 +2,7 @@
   <div class="container">
     <div class="box has-background-info-light">
       <h1 class="is-size-4 has-text-weight-bold">Плащания за {{ indDate}}</h1>
-      <h3>Сумите са формирани при цена за киловат: {{ taxes.kWprice }}.лв и такса: {{taxes.tax}}лв.</h3>
+      <h3>Сумите са формирани при цена за киловат: {{ taxes.kWprice }}лв/{{ toEuro(taxes.kWprice) }}€ и такса: {{taxes.tax}}лв/{{ toEuro(taxes.tax) }}€</h3>
     </div> 
 
     <div class="column is-12">
@@ -22,7 +22,7 @@
                   <td class="has-text-centered">{{ cl.elN }}</td>
                   <td>{{ cl.name }}</td>
                   <td>{{ cl.note }}</td>
-                  <td class="has-text-centered">{{ ((cl.new - cl.old) * taxes.kWprice + taxes.tax).toFixed(2) }}</td>
+                  <td class="has-text-centered">{{ getBill(cl.new, cl.old) }}</td>
                   <td class="has-text-centered">
                     <button v-if="cl.paid" class="button is-small is-danger is-light" @click="togglePaidUnpaid(cl.elN)">Изчисти</button>
                     <button v-else class="button is-small is-info is-light" @click="togglePaidUnpaid(cl.elN)">Плати</button>
@@ -36,8 +36,8 @@
 
       <div class="box columns has-background-info-light">
         <div class="column">
-          <p>Обща сума: {{ totalSum.toFixed(2) }} лв.</p>
-          <p>Касова наличност: {{ cash.toFixed(2) }} лв.</p>
+          <p>Обща сума: {{ totalSum.toFixed(2) }}лв/{{ toEuro(totalSum) }}€</p>
+          <p>Касова наличност: {{ cash.toFixed(2) }}лв/{{ toEuro(cash) }}€</p>
         </div>
         <div class="column has-text-right">
           <p>Главен ел. киловати: {{ indMain.new - indMain.old}} kW</p>
@@ -77,6 +77,14 @@ export default {
         this.getIndications()
     },
     methods: {
+        toEuro(value) {
+            const fixing = 1.95583;
+            return (value / fixing).toFixed(2);
+        },
+        getBill(newInd, oldInd) {
+            const levaBill = (Number(newInd) - Number(oldInd)) * this.taxes.kWprice + this.taxes.tax;
+            return `${levaBill.toFixed(2)}лв/${this.toEuro(levaBill)}€`;
+        },
         async getIndications() {
             this.$store.commit('setLoading', true)
 
